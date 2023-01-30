@@ -445,7 +445,7 @@ body{
     display: flex;
     align-items: center;
     flex-direction: row;
-    column-gap: 346px;
+    column-gap: 200px;
     margin-top: 10px;
     /* flex-wrap: wrap; */
 }
@@ -526,15 +526,15 @@ body{
     flex-direction: column;
     align-items: center;
     transition: 0.1s;
+    padding: 34px;
+    border-radius: 50%;
+    border-style: dotted;
+    border-color: transparent;
 }
 
 .row1:hover{
-    transform: scale(1.2);
     cursor: pointer;
     box-shadow: 3px 7px 11px rgb(0 0 0 / 20%);
-    border-radius: 50%;
-    padding: 34px;
-    border-style: dotted;
     border-color: #feca51;
 }
 
@@ -561,15 +561,16 @@ body{
     flex-direction: column;
     align-items: center;
     transition: 0.1s;
+    margin-top: 48px;
+    padding: 34px;
+    border-radius: 50%;
+    border-style: dotted;
+    border-color: transparent;
 }
 
 .row2:hover{
-    transform: scale(1.2);
     cursor: pointer;
     box-shadow: 3px 7px 11px rgb(0 0 0 / 20%);
-    border-radius: 50%;
-    padding: 34px;
-    border-style: dotted;
     border-color: #feca51;
     margin-top: 25px;
 }

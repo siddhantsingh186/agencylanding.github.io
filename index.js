@@ -93,15 +93,15 @@ function submitform(){
         formsubmissions.push({email: email, password: password});
         localStorage.setItem("formsubmissions", JSON.stringify(formsubmissions));
 
-        document.getElementById("firstname").value = "";
-        document.getElementById("lastname").value = "";
-        document.getElementById("email").value = "";
-        document.getElementById("dob").value = "";
-        document.getElementById("pass").value = "";
-        document.getElementById("confirmpass").value = "";
-
+        // document.getElementById("firstname").value = "";
+        // document.getElementById("lastname").value = "";
+        // document.getElementById("email").value = "";
+        // document.getElementById("dob").value = "";
+        // document.getElementById("pass").value = "";
+        // document.getElementById("confirmpass").value = "";
         alert("Form submitted successfully");
-      
+        window.location.href = 'signup.html';
+
         return true;
     }
 }

@@ -41,16 +41,23 @@ function validateEmail(){
 }
 
 function validateDOB(){
+    var dobval = document.getElementById("dob").value;
     var dob = new Date(document.getElementById("dob").value);
     var today = new Date();
     var age = today.getFullYear() - dob.getFullYear();
-    if (age < 18) {
-        document.getElementById("errordob").innerHTML = "You must be 18 years or older to register";
+    if(dobval == ""){
+        document.getElementById("errordob").innerHTML = "Date of birth should not be empty";
         return false;
     }
     else{
-        document.getElementById("errordob").innerHTML = "";
-        return true;
+        if (age < 18) {
+            document.getElementById("errordob").innerHTML = "You must be 18 years or older to register";
+            return false;
+        }
+        else{
+            document.getElementById("errordob").innerHTML = "";
+            return true;
+        }
     }
 }
 

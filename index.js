@@ -1,77 +1,97 @@
-function validatefirstname(){
+function validateFirstName(){
     var firstName = document.getElementById("firstname").value;
-    var lastName = document.getElementById("lastname");
     if (firstName == "") {
-      alert("First name must be filled out");
-      lastName.disabled = true;
-    } else {
-      lastName.disabled = false;
-    }
-}
-
-function validatelastname(){
-    var lastName = document.getElementById("lastname").value;
-    var email = document.getElementById("email");
-    if(lastName == ""){
-        alert("Last name must be filled out");
-        email.disabled = true;
+      document.getElementById("errorfirstname").innerHTML = "First name should not be empty";
+      return false;
     }
     else{
-        email.disabled = false;
-    }
-}
-
-function validateemail(){
-    var email = document.getElementById("email").value;
-    var dob = document.getElementById("dob");
-    if (email == "") {
-      alert("Email must be filled out");
-      dob.disabled = true;
-    } else {
-        var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-        if (!emailRegex.test(email)) {
-            alert("Enter valid email address");
-            return false;
-        }
-        dob.disabled = false;
+        document.getElementById("errorfirstname").innerHTML = "";
         return true;
     }
 }
 
-function validatedob(){
+function validateLastName(){
+    var lastName = document.getElementById("lastname").value;
+    if(lastName == ""){
+        document.getElementById("errorlastname").innerHTML = "Last name should not be empty";
+        return false;
+    }
+    else{
+        document.getElementById("errorlastname").innerHTML = "";
+        return true;
+    }
+}
+
+function validateEmail(){
+    var email = document.getElementById("email").value;
+    if (email == "") {
+        document.getElementById("erroremail").innerHTML = "Email should not be empty";
+        return false;
+    } else {
+        var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+        if (!emailRegex.test(email)) {
+            document.getElementById("erroremail").innerHTML = "Enter a valid email";
+            return false;
+        }
+        else{
+            document.getElementById("erroremail").innerHTML = "";
+            return true;
+        }
+    }
+}
+
+function validateDOB(){
     var dob = new Date(document.getElementById("dob").value);
-    var password = document.getElementById("pass");
     var today = new Date();
     var age = today.getFullYear() - dob.getFullYear();
     if (age < 18) {
-      alert("Age must be 18 years or older");
-      password.disabled = true;
-    } else {
-      password.disabled = false;
+        document.getElementById("errordob").innerHTML = "You must be 18 years or older to register";
+        return false;
+    }
+    else{
+        document.getElementById("errordob").innerHTML = "";
+        return true;
     }
 }
 
-function validatepass(){
+function validatePass(){
     var password = document.getElementById("pass").value;
     var pattern = /(?=.*[A-Z])(?=.*[!@#\$%\^&\*])/;
-    var confirmPassword = document.getElementById("confirmpass");
-    if (password.length < 8 || !pattern.test(password)) {
-      alert("Password must be at least 8 characters long and contain 1 uppercase letter and 1 symbol");
-      confirmPassword.disabled = true;
-    } else {
-      confirmPassword.disabled = false;
+    if(password == ""){
+        document.getElementById("errorpassword").innerHTML = "Password should not be empty";
+        return false;
+    }
+    else{
+        if (password.length < 8 || !pattern.test(password)) {
+            document.getElementById("errorpassword").innerHTML = "Password must be at least 8 characters long and contain 1 uppercase letter and 1 symbol";
+            return false;
+        }
+        else{
+            document.getElementById("errorpassword").innerHTML = "";
+            return true;
+        }
     }
 }
 
-function validateconfirmpass() {
+function validateConfirmPass() {
     var password = document.getElementById("pass").value;
     var confirmPassword = document.getElementById("confirmpass").value;
-    if (password !== confirmPassword) {
-      alert("Passwords do not match");
+    if(confirmPassword == ""){
+        document.getElementById("errorconfirmpass").innerHTML = "Confirm password should not be empty";
+    }
+    else{
+        if (password !== confirmPassword) {
+            document.getElementById("errorconfirmpass").innerHTML = "Passwords do not match";
+            return false;
+        }
+        else{
+            document.getElementById("errorconfirmpass").innerHTML = "";
+            return true;
+        }
     }
 }
 
-function submitform(){
+function submitForm(){
     var firstName = document.getElementById("firstname").value;
     var lastName = document.getElementById("lastname").value;
     var email = document.getElementById("email").value;
@@ -92,13 +112,6 @@ function submitform(){
         }
         formsubmissions.push({email: email, password: password});
         localStorage.setItem("formsubmissions", JSON.stringify(formsubmissions));
-
-        // document.getElementById("firstname").value = "";
-        // document.getElementById("lastname").value = "";
-        // document.getElementById("email").value = "";
-        // document.getElementById("dob").value = "";
-        // document.getElementById("pass").value = "";
-        // document.getElementById("confirmpass").value = "";
         alert("Form submitted successfully");
         window.location.href = 'signup.html';
 

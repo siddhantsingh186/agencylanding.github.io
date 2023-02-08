@@ -1,109 +1,147 @@
 function validateFirstName(){
-    var firstName = document.getElementById("firstname").value;
-    if (firstName == "") {
-      document.getElementById("errorfirstname").innerHTML = "First name should not be empty";
+    let firstName = document.getElementById("firstName").value;
+    let firstNameRegex = /^\S[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)\S$/;
+    if (firstName === "") {
+        document.querySelector(".user-box:nth-child(1) .errorBox").textContent = "First name should not be empty";
+        return false;
     }
     else{
-        document.getElementById("errorfirstname").innerHTML = "";
+        if(!firstNameRegex.test(firstName)){
+            document.querySelector(".user-box:nth-child(1) .errorBox").textContent = "Enter a valid first name";
+            return false;
+        }
+        else{
+            document.querySelector(".user-box:nth-child(1) .errorBox").textContent = "";
+            return true;
+        }
     }
 }
 
 function validateLastName(){
-    var lastName = document.getElementById("lastname").value;
-    if(lastName == ""){
-        document.getElementById("errorlastname").innerHTML = "Last name should not be empty";
+    let lastName = document.getElementById("lastName").value;
+    let lastNameRegex = /^\S[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)\S$/;
+    if(lastName === ""){
+        return true;
     }
     else{
-        document.getElementById("errorlastname").innerHTML = "";
+        if(!lastNameRegex.test(lastName)){
+            document.querySelector(".user-box:nth-child(2) .errorBox").textContent = "Enter a valid last name";
+            return false;
+        }
+        else{
+            document.querySelector(".user-box:nth-child(2) .errorBox").textContent = "";
+            return true;
+        }
     }
 }
 
 function validateEmail(){
-    var email = document.getElementById("email").value;
-    if (email == "") {
-        document.getElementById("erroremail").innerHTML = "Email should not be empty";
+    let email = document.getElementById("email").value;
+    if (email === "") {
+        document.querySelector(".user-box:nth-child(3) .errorBox").textContent = "Email should not be empty";
+        return false;
     } else {
         var emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
         if (!emailRegex.test(email)) {
-            document.getElementById("erroremail").innerHTML = "Enter a valid email";
+            document.querySelector(".user-box:nth-child(3) .errorBox").textContent = "Enter a valid email";
+            return false;
         }
         else{
-            document.getElementById("erroremail").innerHTML = "";
+            document.querySelector(".user-box:nth-child(3) .errorBox").textContent = "";
+            return true;
         }
     }
 }
 
 function validateDOB(){
-    var dobval = document.getElementById("dob").value;
-    var dob = new Date(document.getElementById("dob").value);
-    var today = new Date();
-    var age = today.getFullYear() - dob.getFullYear();
-    if(dobval == ""){
-        document.getElementById("errordob").innerHTML = "Date of birth should not be empty";
+    let dob = document.getElementById("dob").value;
+    if (dob === "") {
+        document.querySelector(".user-box:nth-child(4) .errorBox").textContent = "Date of birth should not be empty";
+        return false;
     }
     else{
-        if (age < 18) {
-            document.getElementById("errordob").innerHTML = "You must be 18 years or older to register";
+        dob = new Date(dob);
+        let todaysDate = new Date();
+        let age = todaysDate.getFullYear() - dob.getFullYear();
+        let monthGap = todaysDate.getMonth() - dob.getMonth();
+        if (monthGap < 0 || (monthGap === 0 && todaysDate.getDate() < dob.getDate())) {
+            age--;
+        }
+        if(age < 18){
+            document.querySelector(".user-box:nth-child(4) .errorBox").textContent = "You must be 18 years old to register";
+            return false;
         }
         else{
-            document.getElementById("errordob").innerHTML = "";
+            document.querySelector(".user-box:nth-child(4) .errorBox").textContent = "";
+            return true;
         }
     }
 }
 
-function validatePass(){
-    var password = document.getElementById("pass").value;
-    var pattern = /(?=.*[A-Z])(?=.*[!@#\$%\^&\*])/;
-    if(password == ""){
-        document.getElementById("errorpassword").innerHTML = "Password should not be empty";
+function validatePassword(){
+    let password = document.getElementById("password").value;
+    let passwordRegex = /(?=.*[A-Z])(?=.*[!@#\$%\^&\*])/;
+    if(password === ""){
+        document.querySelector(".user-box:nth-child(5) .errorBox").textContent = "Password should not be empty";
+        return false;
     }
     else{
-        if (password.length < 8 || !pattern.test(password)) {
-            document.getElementById("errorpassword").innerHTML = "Password must be at least 8 characters long and contain 1 uppercase letter and 1 symbol";
+        if (password.length < 8 || !passwordRegex.test(password)) {
+            document.querySelector(".user-box:nth-child(5) .errorBox").textContent = "Password should be at least 8 characters long and should contain at least one uppercase letter and one special character";
+            return false;
         }
         else{
-            document.getElementById("errorpassword").innerHTML = "";
+            document.querySelector(".user-box:nth-child(5) .errorBox").textContent = "";
+            return true;
         }
     }
 }
 
-function validateConfirmPass() {
-    var password = document.getElementById("pass").value;
-    var confirmPassword = document.getElementById("confirmpass").value;
-    if(confirmPassword == ""){
-        document.getElementById("errorconfirmpass").innerHTML = "Confirm password should not be empty";
+function validateConfirmPassword() {
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirmPassword").value;
+    if(confirmPassword === ""){
+        document.querySelector(".user-box:nth-child(6) .errorBox").textContent = "Confirm password should not be empty";
+        return false;
     }
     else{
         if (password !== confirmPassword) {
-            document.getElementById("errorconfirmpass").innerHTML = "Passwords do not match";
+            document.querySelector(".user-box:nth-child(6) .errorBox").textContent = "Passwords do not match";
+            return false;
         }
         else{
-            document.getElementById("errorconfirmpass").innerHTML = "";
+            document.querySelector(".user-box:nth-child(6) .errorBox").textContent = "";
+            return true;
         }
     }
 }
 
 function submitForm(){
-    var firstName = document.getElementById("firstname").value;
-    var lastName = document.getElementById("lastname").value;
-    var email = document.getElementById("email").value;
-    var dob = document.getElementById("dob").value;
-    var password = document.getElementById("pass").value;
-    var confirmPassword = document.getElementById("confirmpass").value;
-    if (firstName == "" || lastName == "" || email == "" || dob == "" || password == "" || confirmPassword == "") {
+    let firstName = document.getElementById("firstName").value;
+    let lastName = document.getElementById("lastName").value;
+    let email = document.getElementById("email").value;
+    let dob = document.getElementById("dob").value;
+    let password = document.getElementById("password").value;
+    let confirmPassword = document.getElementById("confirmPassword").value;
+    if (firstName === "" || lastName === "" || email === "" || dob === "" || password === "" || confirmPassword === "") {
       alert("Please fill out all the fields");
     } else {
-        var formsubmissions = localStorage.getItem("formsubmissions") ? JSON.parse(localStorage.getItem("formsubmissions")) : [];
-
-        for(var i = 0; i < formsubmissions.length; i++){
-            if(formsubmissions[i].email == email){
-                alert("User email already exists");
-                return false;
-            }
+        if(!validateFirstName() || !validateLastName() || !validateEmail() || !validateDOB() || !validatePassword() || !validateConfirmPassword()){
+            alert("Please fill out all the fields correctly");
         }
-        formsubmissions.push({email: email, password: password});
-        localStorage.setItem("formsubmissions", JSON.stringify(formsubmissions));
-        alert("Form submitted successfully");
-        window.location.href = 'signup.html';
+        else{
+            let formSubmissions = localStorage.getItem("formSubmissions") ? JSON.parse(localStorage.getItem("formSubmissions")) : [];
+
+            for(var i = 0; i < formSubmissions.length; i++){
+                if(formSubmissions[i].email === email){
+                    alert("User email already exists");
+                    return false;
+                }
+            }
+            formSubmissions.push({email: email, password: password});
+            localStorage.setItem("formSubmissions", JSON.stringify(formSubmissions));
+            alert("Form submitted successfully");
+            window.location.href = 'signup.html';
+        }
     }
 }

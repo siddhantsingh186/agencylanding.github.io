@@ -17,34 +17,34 @@
             <h2>Sign Up</h2>
             <form id = "form">
               <div class="user-box">
-                <input type="text" name="" id="firstname" onblur= "validateFirstName()" required>
+                <input type="text" name="" id="firstName" onblur= "validateFirstName()" required>
                 <label>First name</label>
-                <span id="errorfirstname" style="color: red; font-family: auto; font-size: 14px;"></span>
+                <span class="errorBox" style="color: red; font-family: auto; font-size: 14px;"></span>
               </div>
               <div class="user-box">
-                <input type="text" name="" id="lastname" onblur="validateLastName()" required>
+                <input type="text" name="" id="lastName" onblur="validateLastName()" required>
                 <label>Last name</label>
-                <span id="errorlastname" style="color: red; font-family: auto; font-size: 14px;"></span>
+                <span class ="errorBox" style="color: red; font-family: auto; font-size: 14px;"></span>
               </div>
               <div class="user-box">
                 <input type="email" name="" id="email" onblur="validateEmail()" required>
                 <label>Email</label>
-                <span id="erroremail" style="color: red; font-family: auto; font-size: 14px;"></span>
+                <span class ="errorBox" style="color: red; font-family: auto; font-size: 14px;"></span>
               </div>
               <div class="user-box">
                 <input type="date" name="" id="dob" onblur="validateDOB()" required>
                 <label>Date of Birth (mm/dd/yyyy)</label>
-                <span id="errordob" style="color: red; font-family: auto; font-size: 14px;"></span>
+                <span class ="errorBox" style="color: red; font-family: auto; font-size: 14px;"></span>
               </div>
               <div class="user-box">
-                <input type="password" name="" placeholder="" id="pass" onblur="validatePass()" required>
+                <input type="password" name="" placeholder="" id="password" onblur="validatePassword()" required>
                 <label>Password</label>
-                <span id="errorpassword" style="color: red; font-family: auto; font-size: 14px;"></span>
+                <span class ="errorBox" style="color: red; font-family: auto; font-size: 14px;"></span>
               </div>
               <div class="user-box">
-                <input type="password" name="" id="confirmpass" placeholder="" onblur="validateConfirmPass()" required>
+                <input type="password" name="" id="confirmPassword" placeholder="" onblur="validateConfirmPassword()" required>
                 <label>Confirm Password</label>
-                <span id="errorconfirmpass" style="color: red; font-family: auto; font-size: 14px;"></span>
+                <span class ="errorBox" style="color: red; font-family: auto; font-size: 14px;"></span>
               </div>
               <a href="#" onclick="submitForm()">
                 <span></span>

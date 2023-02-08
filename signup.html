@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./signup.css">
+    </head>
+    <body>
+        <div class="login-box">
+            <h2>Sign Up</h2>
+            <form id = "form">
+              <div class="user-box">
+                <input type="text" name="" id="firstName" onblur= "validateFirstName()" required>
+                <label>First name</label>
+                <span class="errorBox" style="color: red; font-family: auto; font-size: 14px;"></span>
+              </div>
+              <div class="user-box">
+                <input type="text" name="" id="lastName" onblur="validateLastName()" required>
+                <label>Last name</label>
+                <span class ="errorBox" style="color: red; font-family: auto; font-size: 14px;"></span>
+              </div>
+              <div class="user-box">
+                <input type="email" name="" id="email" onblur="validateEmail()" required>
+                <label>Email</label>
+                <span class ="errorBox" style="color: red; font-family: auto; font-size: 14px;"></span>
+              </div>
+              <div class="user-box">
+                <input type="date" name="" id="dob" onblur="validateDOB()" required>
+                <label>Date of Birth (mm/dd/yyyy)</label>
+                <span class ="errorBox" style="color: red; font-family: auto; font-size: 14px;"></span>
+              </div>
+              <div class="user-box">
+                <input type="password" name="" placeholder="" id="password" onblur="validatePassword()" required>
+                <label>Password</label>
+                <span class ="errorBox" style="color: red; font-family: auto; font-size: 14px;"></span>
+              </div>
+              <div class="user-box">
+                <input type="password" name="" id="confirmPassword" placeholder="" onblur="validateConfirmPassword()" required>
+                <label>Confirm Password</label>
+                <span class ="errorBox" style="color: red; font-family: auto; font-size: 14px;"></span>
+              </div>
+              <a href="#" onclick="submitForm()">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Submit
+              </a>
+            </form>
+          </div>   
+        <script src="index.js" async defer></script>
+    </body>
+</html>
